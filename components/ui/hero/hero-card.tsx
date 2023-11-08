@@ -10,7 +10,7 @@ type HeroCardProps = {
 export default function HeroCard({ Hero }: HeroCardProps) {
     return (
         <div 
-            className="relative aspect-[3/4] group cursor-pointer border-2 border-zinc-500 rounded-xl overflow-hidden shadow-lg duration-300 md:hover:scale-105 md:hover:shadow-xl"
+            className="relative aspect-[3/4] group cursor-pointer border-2 border-zinc-500 rounded-xl overflow-hidden shadow-xl duration-300 md:hover:scale-105 md:hover:shadow-2xl"
         > 
             <NextImage
                 src={Hero.images.lg}

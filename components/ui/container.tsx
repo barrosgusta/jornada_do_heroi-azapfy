@@ -14,7 +14,7 @@ export default function Container({ children, className }: ContainerProps) {
             animate={{ opacity: 1, scale: 1  }}
             transition={{ duration: 0.3, ease: "easeOut" }}
             exit={{ opacity: 0, scale: 0.97 }}
-            className={cn("my-4 md:my-12 mx-auto max-w-7xl p-10 rounded-xl border h-full min-h-screen", className)}
+            className={cn("my-4 md:my-12 mx-auto max-w-7xl p-10 rounded-xl border h-full min-h-screen shadow-xl", className)}
         >
             {children}
         </motion.div>
