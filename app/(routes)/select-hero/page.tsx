@@ -1,20 +1,18 @@
 import getHeros from "@/actions/get-heros"
 import Container from "@/components/ui/container";
-import HeroList from "@/components/ui/hero/hero-list";
+import HeroList from "@/components/hero-list";
 
 export default async function SelectHeroPage({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: { [key: string]: string | string[] | string[][] | undefined };
 }) {
   const heros = await getHeros();
-
+ 
   const page = searchParams["page"] ?? 1;
   const per_page = searchParams["per_page"] ?? 12; 
   const name = searchParams["name"] ?? "";
   const publisher = searchParams["publisher"] ?? "";
-
-  console.log(name, publisher);
 
   const filteredHeros = heros.filter((hero) => {
     if (name) {
@@ -33,7 +31,9 @@ export default async function SelectHeroPage({
 
   return (
     <Container>
-        <h1 className="w-full text-center text-5xl uppercase m-5 drop-shadow-lg"><strong>Escolha um Heroi para batalhar</strong></h1>
+        <h1 className="w-full text-center text-5xl uppercase m-5 drop-shadow-lg">
+          <strong>Escolha dois Heróis para batalhar</strong>
+        </h1>
         <HeroList 
           heros={currentHeros}
           hasNextPage={end < filteredHeros.length}
