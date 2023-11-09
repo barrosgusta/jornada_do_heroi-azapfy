@@ -65,10 +65,27 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 },
         },
+        'drop-glow-pulse': {
+          '0%, 100%': {
+            dropShadow: '0 0 10px 2px rgba(0, 255, 200, 0.0)',
+          },
+          '50%': {
+            dropShadow: '0 0 10px 2px rgba(0, 255, 100, 0.25)',
+          },
+        },
+        'glow-pulse': {
+          '0%, 100%': {
+            boxShadow: '0 0 20px 1px rgba(0, 100, 200, 0.0)',
+          },
+          '50%': {
+            boxShadow: '0 0 20px 1px rgba(0, 255, 100, 0.25)',
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        'glow-pulse': 'glow-pulse 2s ease-out infinite',
       },
     },
   },
