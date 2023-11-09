@@ -1,45 +1,48 @@
-type Hero = {
-    id: number;
-    name: string;
-    slug: string;
-    powerstats: {
-      intelligence: number;
-      strength: number;
-      speed: number;
-      durability: number;
-      power: number;
-      combat: number;
+export class Hero {
+    id: number = 0;
+    name: string = '';
+    slug: string = '';
+    powerstats = {
+      intelligence: 0,
+      strength: 0,
+      speed: 0,
+      durability: 0,
+      power: 0,
+      combat: 0
     };
-    appearance: {
-      gender: string;
-      race: string;
-      height: [string, string];
-      weight: [string, string];
-      eyeColor: string;
-      hairColor: string;
+    appearance = {
+      gender: '',
+      race: '',
+      height: ['', ''],
+      weight: ['', ''],
+      eyeColor: '',
+      hairColor: ''
     };
-    biography: {
-      fullName: string;
-      alterEgos: string;
-      aliases: string[];
-      placeOfBirth: string;
-      firstAppearance: string;
-      publisher: string;
-      alignment: string;
+    biography = {
+      fullName: '',
+      alterEgos: '',
+      aliases: [],
+      placeOfBirth: '',
+      firstAppearance: '',
+      publisher: '',
+      alignment: ''
     };
-    work: {
-      occupation: string;
-      base: string;
+    work = {
+      occupation: '',
+      base: ''
     };
-    connections: {
-      groupAffiliation: string;
-      relatives: string;
+    connections = {
+      groupAffiliation: '',
+      relatives: ''
     };
-    images: {
-      xs: string;
-      sm: string;
-      md: string;
-      lg: string;
+    images = {
+      xs: '',
+      sm: '',
+      md: '',
+      lg: ''
     };
-  };
-  
+
+    constructor(hero: Partial<Hero>) {
+        Object.assign(this, hero);
+    }
+}
