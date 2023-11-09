@@ -2,11 +2,14 @@
 
 import { useState } from "react"
 import HeroCard from "./hero-card"
-import { Input } from "../input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../select"
-import { Button } from "../button"
-import { Hand, Search } from "lucide-react"
+import { Input } from "./ui/input"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
+import { Button } from "./ui/button"
+import { Search } from "lucide-react"
 import { useRouter, useSearchParams } from "next/navigation"
+import { Hero } from "@/types"
+import useCardGameModal from "@/hooks/use-card-game-modal"
+import { NullHero } from "@/lib/utils"
 
 type HeroListProps = {
     heros: Hero[],
@@ -23,8 +26,6 @@ export default function HeroList({ heros, hasNextPage, hasPreviousPage } : HeroL
     const page = searchParams.get("page") ?? 1;
     const per_page = searchParams.get("per_page") ?? 12;
 
-    console.log(page, per_page);
-
     const handleSearchClick = () => {
         if (!currentFilter) router.replace("/select-hero");
 
@@ -33,17 +34,35 @@ export default function HeroList({ heros, hasNextPage, hasPreviousPage } : HeroL
         } else if (currentFilter === "publisher") {
             router.push(`?publisher=${searchText}`);
         } 
-    }
+    };
 
     const handleNextPageClick = () => {
         router.push(`?page=${Number(page) + 1}&per_page=${per_page}${currentFilter ? `&${currentFilter}=${searchText}` : ""}`);
-    }
+    };
 
     const handlePreviousPageClick = () => {
         router.push(`?page=${Number(page) - 1}&per_page=${per_page}${currentFilter ? `&${currentFilter}=${searchText}` : ""}`);
-    }
+    };
 
+    const cardGameModalState = useCardGameModal();
 
+    const isFirstCardSelected = cardGameModalState.player1Hero.id !== 0;
+    const isSecondCardSelected = cardGameModalState.player2Hero.id !== 0; 
+
+    const handleSelectHero = (hero: Hero) => {
+        const isThisCardSelected = cardGameModalState.player1Hero.id === hero.id || cardGameModalState.player2Hero.id === hero.id;
+
+        if (isThisCardSelected) {
+            cardGameModalState.player1Hero.id === hero.id ? cardGameModalState.setPlayer1Hero(NullHero) : cardGameModalState.setPlayer2Hero(NullHero);
+        } else {
+            if (!isFirstCardSelected) {
+                cardGameModalState.setPlayer1Hero(hero);
+            } else if (!isSecondCardSelected) {
+                cardGameModalState.setPlayer2Hero(hero);
+                cardGameModalState.onOpen();
+            }
+        };
+    };
 
     return (
         <div className="space-y-6">
@@ -74,12 +93,16 @@ export default function HeroList({ heros, hasNextPage, hasPreviousPage } : HeroL
                     }}
                 />
                 <Button variant="outline" onClick={handleSearchClick}>
-                    <Search size={17} color="black" />
+                    <Search size={17}/>
                 </Button>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-12">
                 {heros.map((hero) => (
-                    <HeroCard key={hero.id} Hero={hero} />
+                    <HeroCard 
+                        key={hero.id} 
+                        Hero={hero} 
+                        isSelected={cardGameModalState.player1Hero.id === hero.id || cardGameModalState.player2Hero.id === hero.id}
+                        onClick={() => {handleSelectHero(hero)}}/>
                 ))}
             </div>
             <div className="flex justify-center items-center gap-4">
