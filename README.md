@@ -1,3 +1,18 @@
+# Desafio front-end Azapfy - Jornada do Herói
+
+![Home Screen](/screenshots/home.gif)
+![Hero Screen](/screenshots/select-hero.gif)
+
+### Tecnologias utilizadas:
+* Next.js
+* React.js
+* Zustand
+* shadcn/ui
+* TailwindCSS
+* Framer Motion
+
+___
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
