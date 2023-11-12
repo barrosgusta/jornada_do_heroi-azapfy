@@ -1,4 +1,4 @@
-import { NullHero } from "@/lib/utils";
+import { DummyHero } from "@/lib/utils";
 import { Hero } from "@/types";
 import { create } from "zustand";
 
@@ -11,9 +11,9 @@ interface HeroPreviewModalStore {
 
 const useHeroPreviewModal = create<HeroPreviewModalStore>((set) => ({
     isOpen: false,
-    data: NullHero,
+    data: DummyHero,
     onOpen: (data: Hero) => set({ isOpen: true, data }),
-    onClose: () => set({ isOpen: false, data: NullHero }),
+    onClose: () => set({ isOpen: false, data: DummyHero }),
 }));
 
 export default useHeroPreviewModal;

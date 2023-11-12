@@ -1,4 +1,4 @@
-import { NullHero } from "@/lib/utils";
+import { DummyHero } from "@/lib/utils";
 import { Hero } from "@/types";
 import { create } from "zustand";
 
@@ -13,8 +13,8 @@ interface CardGameModalStore {
 };
 
 const useCardGameModal = create<CardGameModalStore>((set) => ({
-    player1Hero: NullHero,
-    player2Hero: NullHero,
+    player1Hero: DummyHero,
+    player2Hero: DummyHero,
     setPlayer1Hero: (hero: Hero) => set({ player1Hero: hero }),
     setPlayer2Hero: (hero: Hero) => set({ player2Hero: hero }),
     isOpen: false,
@@ -22,8 +22,8 @@ const useCardGameModal = create<CardGameModalStore>((set) => ({
     onClose: () =>
         set({
             isOpen: false,
-            player1Hero: NullHero,
-            player2Hero: NullHero,
+            player1Hero: DummyHero,
+            player2Hero: DummyHero,
         }),
 }));
 
