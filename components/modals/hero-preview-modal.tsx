@@ -27,7 +27,7 @@ export default function HeroPreviewModal() {
                 className="p-11 max-w-2xl"
             >
                 <div className="grid grid-cols-2 gap-5">
-                    <div className="relative max-w-xs rounded-xl border-2 border-black shadow-xl overflow-hidden aspect-[3/4]">
+                    <div className="relative max-w-xs border-2 border-zinc-500 dark:border-zinc-900 rounded-xl overflow-hidden shadow-xl aspect-[3/4]">
                         <NextImage
                             fill
                             alt="Hero Image"

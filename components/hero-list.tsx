@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import HeroCard from "./hero-card"
+import { HeroCard, HeroCardInfoButton, HeroCardRoot } from "./hero-card"
 import { Input } from "./ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
 import { Button } from "./ui/button"
@@ -9,7 +9,7 @@ import { Search } from "lucide-react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Hero } from "@/types"
 import useCardGameModal from "@/hooks/use-card-game-modal"
-import { NullHero } from "@/lib/utils"
+import { DummyHero } from "@/lib/utils"
 
 type HeroListProps = {
     heros: Hero[],
@@ -53,7 +53,7 @@ export default function HeroList({ heros, hasNextPage, hasPreviousPage } : HeroL
         const isThisCardSelected = cardGameModalState.player1Hero.id === hero.id || cardGameModalState.player2Hero.id === hero.id;
 
         if (isThisCardSelected) {
-            cardGameModalState.player1Hero.id === hero.id ? cardGameModalState.setPlayer1Hero(NullHero) : cardGameModalState.setPlayer2Hero(NullHero);
+            cardGameModalState.player1Hero.id === hero.id ? cardGameModalState.setPlayer1Hero(DummyHero) : cardGameModalState.setPlayer2Hero(DummyHero);
         } else {
             if (!isFirstCardSelected) {
                 cardGameModalState.setPlayer1Hero(hero);
@@ -98,11 +98,15 @@ export default function HeroList({ heros, hasNextPage, hasPreviousPage } : HeroL
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-12">
                 {heros.map((hero) => (
-                    <HeroCard 
-                        key={hero.id} 
-                        Hero={hero} 
-                        isSelected={cardGameModalState.player1Hero.id === hero.id || cardGameModalState.player2Hero.id === hero.id}
-                        onClick={() => {handleSelectHero(hero)}}/>
+                    <HeroCardRoot key={hero.id} >
+                        <HeroCard 
+                            Hero={hero}
+                            isSelectable={true} 
+                            isSelected={cardGameModalState.player1Hero.id === hero.id || cardGameModalState.player2Hero.id === hero.id}
+                            onClick={() => {handleSelectHero(hero)}}
+                        />
+                        <HeroCardInfoButton Hero={hero} />
+                    </HeroCardRoot>
                 ))}
             </div>
             <div className="flex justify-center items-center gap-4">

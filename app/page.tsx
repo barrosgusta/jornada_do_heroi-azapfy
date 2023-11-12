@@ -16,7 +16,7 @@ export default function Home() {
   }
 
   return (
-    <Container className="grid justify-center min-h-[90vh]">
+    <Container className="grid justify-center md:min-h-[90vh]">
       <div className={cn("duration-300 flex flex-col justify-center items-center", isLoading && "opacity-0")}>
         <h1 className="w-full text-center text-5xl uppercase m-5 drop-shadow-lg"><strong>Bem vindo a Jornada do Heroi</strong></h1>
         <Button className="animate-bounce" onClick={handleOnClick}>
