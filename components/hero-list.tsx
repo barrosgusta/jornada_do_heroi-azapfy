@@ -9,15 +9,16 @@ import { Search } from "lucide-react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Hero } from "@/types"
 import useCardGameModal from "@/hooks/use-card-game-modal"
-import { DummyHero } from "@/lib/utils"
+import { DummyHero, cn } from "@/lib/utils"
 
 type HeroListProps = {
     heros: Hero[],
     hasNextPage: boolean,
     hasPreviousPage: boolean,
+    className?: string
 }
 
-export default function HeroList({ heros, hasNextPage, hasPreviousPage } : HeroListProps) {
+export default function HeroList({ heros, hasNextPage, hasPreviousPage, className } : HeroListProps) {
     const router = useRouter();
     const searchParams = useSearchParams();
     const [currentFilter, setCurrentFilter] = useState<"name" | "publisher" | undefined>(undefined);
@@ -65,7 +66,7 @@ export default function HeroList({ heros, hasNextPage, hasPreviousPage } : HeroL
     };
 
     return (
-        <div className="space-y-6">
+        <div className={cn("space-y-6 w-full", className)}>
             <div className="flex gap-4">
                 <Select
                     value={currentFilter}
