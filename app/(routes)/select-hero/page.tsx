@@ -30,7 +30,7 @@ export default async function SelectHeroPage({
   const currentHeros = filteredHeros.slice(start,end);
 
   return (
-    <Container>
+    <Container className="flex flex-col items-center">
         <h1 className="w-full text-center text-5xl uppercase m-5 drop-shadow-lg">
           <strong>Escolha dois Heróis para batalhar</strong>
         </h1>
