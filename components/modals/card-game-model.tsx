@@ -73,14 +73,14 @@ export default function CardGameModal() {
             onOpenChange={cardGameModalState.onClose}
         >
             <DialogContent
-                className="p-11 max-w-5xl"
+                className="max-w-5xl"
             >
                 <h1 className="text-center text-3xl uppercase">{getWinnerName()}</h1>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     <HeroCardRoot className="grid justify-center self-center">
                         <HeroCard  
                             Hero={player1Hero}
-                            className="max-h-80 min-h-[270px] md:min-h-[230px] lg:min-h-[290px]"
+                            className="max-h-80 min-h-[210px] md:min-h-[230px] lg:min-h-[290px]"
                         />
                         <HeroCardInfoButton Hero={player1Hero} />
                     </HeroCardRoot>
@@ -127,7 +127,7 @@ export default function CardGameModal() {
                     <HeroCardRoot className="grid justify-center">
                         <HeroCard 
                             Hero={player2Hero}
-                            className="max-h-80 min-h-[270px] md:min-h-[230px] lg:min-h-[290px]"
+                            className="max-h-80 min-h-[210px] md:min-h-[230px] lg:min-h-[290px]"
                         />
                         <HeroCardInfoButton Hero={player2Hero} />
                     </HeroCardRoot>
