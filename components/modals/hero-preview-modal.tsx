@@ -26,8 +26,8 @@ export default function HeroPreviewModal() {
             <DialogContent
                 className="max-w-2xl"
             >
-                <div className="grid grid-cols-2 gap-5">
-                    <div className="relative max-w-xs border-2 border-zinc-500 dark:border-zinc-900 rounded-xl overflow-hidden shadow-xl aspect-[3/4]">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div className="relative max-w-xs border-2 border-zinc-500 dark:border-zinc-900 rounded-xl overflow-hidden shadow-xl aspect-[3/4] justify-self-center w-[80%]">
                         <NextImage
                             fill
                             alt="Hero Image"
@@ -35,7 +35,7 @@ export default function HeroPreviewModal() {
                             className="object-cover"
                         />
                     </div>
-                    <ScrollArea className="row-span-2 p-0 border rounded-lg shadow-md max-h-96">
+                    <ScrollArea className="row-span-2 p-0 border rounded-lg shadow-md max-h-44 md:max-h-96">
                         <div className="space-y-3 m-2">
                             <div>
                                 <h1 className="uppercase text-2xl">
