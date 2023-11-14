@@ -95,7 +95,7 @@ export default function CardGameModal() {
                                         <ChevronUpSquare size={15} color="green" />
                                     )}
                                     {Number(value) < Number(player2Hero.powerstats[key as keyof typeof player1Hero.powerstats]) && (
-                                        <ChevronDownSquare className="transform rotate-180" size={15} color="red" />
+                                        <ChevronDownSquare size={15} color="red" />
                                     )}
                                     {Number(value) == Number(player2Hero.powerstats[key as keyof typeof player1Hero.powerstats]) && (
                                         <SquareEqualIcon size={15} className="text-yellow-600" />
@@ -112,7 +112,7 @@ export default function CardGameModal() {
                                         <ChevronUpSquare size={15} color="green" />
                                     )}
                                     {Number(value) < Number(player1Hero.powerstats[key as keyof typeof player2Hero.powerstats]) && (
-                                        <ChevronDownSquare className="transform rotate-180" size={15} color="red" />
+                                        <ChevronDownSquare size={15} color="red" />
                                     )}
                                     {Number(value) == Number(player1Hero.powerstats[key as keyof typeof player2Hero.powerstats]) && (
                                         <SquareEqualIcon size={15} className="text-yellow-600" />
