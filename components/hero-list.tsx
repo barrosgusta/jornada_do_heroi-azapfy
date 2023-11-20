@@ -10,6 +10,7 @@ import { useRouter, useSearchParams } from "next/navigation"
 import { Hero } from "@/types"
 import useCardGameModal from "@/hooks/use-card-game-modal"
 import { DummyHero, cn } from "@/lib/utils"
+import NoResults from "./ui/no-results"
 
 type HeroListProps = {
     heros: Hero[],
@@ -97,6 +98,9 @@ export default function HeroList({ heros, hasNextPage, hasPreviousPage, classNam
                     <Search size={17}/>
                 </Button>
             </div>
+            {!heros.length && (
+                <NoResults />
+            )}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-12">
                 {heros.map((hero) => (
                     <HeroCardRoot key={hero.id} >
@@ -110,23 +114,25 @@ export default function HeroList({ heros, hasNextPage, hasPreviousPage, classNam
                     </HeroCardRoot>
                 ))}
             </div>
-            <div className="flex justify-center items-center gap-4">
-                <Button 
-                    variant="outline" 
-                    onClick={handlePreviousPageClick}
-                    disabled={!hasPreviousPage}
-                >
-                    Anterior
-                </Button>
-                <span className="text-center">Página {page}</span>
-                <Button 
-                    variant="outline"
-                    onClick={handleNextPageClick}
-                    disabled={!hasNextPage}
-                >
-                    Próxima
-                </Button>
-            </div>
+            {(hasNextPage || hasPreviousPage) && (
+                <div className="flex justify-center items-center gap-4">
+                    <Button 
+                        variant="outline" 
+                        onClick={handlePreviousPageClick}
+                        disabled={!hasPreviousPage}
+                    >
+                        Anterior
+                    </Button>
+                    <span className="text-center">Página {page}</span>
+                    <Button 
+                        variant="outline"
+                        onClick={handleNextPageClick}
+                        disabled={!hasNextPage}
+                    >
+                        Próxima
+                    </Button>
+                </div>
+            )}
         </div>
     )
 }
