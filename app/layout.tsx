@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
@@ -26,7 +26,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ModalProvider />
-          {children}
+          <div className="md:py-12">
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>
